@@ -2,7 +2,6 @@ $(function() {
     var Accordion = function(el, multiple) {
         this.el = el || {};
         this.multiple = multiple || false;
-
         // Variables privadas
         var links = $('.toc>ul>li>a');
         // Evento
@@ -34,38 +33,32 @@ $(function(){
           scrollTop: targetOffset
         },
         500);
-        reset();
+        showMe(this);
         return false;
       }
     }
   });
 });
-var aList=document.links;
-for (var i=0;i<aList.length;i++){
-    aList[i].onclick=function(){showme(this);}
-}
-var int=0;
-var obj=null;
-function showme(o){
-    if(int!=0){
-        int=window.clearInterval(int);
-        obj.style.color="#000";
-        int=0;
+var int = 0;
+var obj = null;
+function showMe(thisObj){
+    var index = 0;
+    if(int != 0){
+        int = self.clearInterval(int);
+        obj.style.color = "#000";
+        int = 0;
     }
-    var i=0;
-    obj=document.getElementById(o.href.split("#")[1]);
-    int=setInterval("changeColor()", 50);
-}
-function changeColor() {
-    var color = "#FFFFFF|#E8E8E8|#D1D1D1|#B9B9B9|#A2A2A2|#8B8B8B|#747474|#5D5D5D|#464646|#2E2E2E|#171717|#000000|#171717|#2E2E2E|#464646|#5D5D5D|#747474|#8B8B8B|#A2A2A2|#B9B9B9|#D1D1D1|#E8E8E8|#FFFFFF";
-    color = color.split("|");
-    if(i>=color.length){
-        i=0;
-    }
-    obj.style.color = color[i];
-    i++;
-}
-function reset()
-{
-    setTimeout(function(){int=window.clearInterval(int);int=0;obj.style.color="#000";},5000);
+    obj = document.getElementById(thisObj.href.split("#")[1]);
+    int = setInterval(function (){
+        if(index >= 80){
+            int = self.clearInterval(int);
+            obj.style.color = "#000";
+            int = 0;
+        }
+        var color = "#FFFFFF|#E8E8E8|#D1D1D1|#B9B9B9|#A2A2A2|#8B8B8B|#747474|#5D5D5D|#464646|#2E2E2E|#171717|#000000|#171717|#2E2E2E|#464646|#5D5D5D|#747474|#8B8B8B|#A2A2A2|#B9B9B9|#D1D1D1|#E8E8E8|#FFFFFF";
+        color = color.split("|");
+        obj.style.color = color[index%23]; 
+        index++;       
+        return false;
+    }, 60);
 }
