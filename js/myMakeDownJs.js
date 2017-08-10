@@ -51,10 +51,10 @@ function showme(o){
         int=window.clearInterval(int);
         obj.style.color="#000";
         int=0;
-    }    
+    }
     var i=0;
     obj=document.getElementById(o.href.split("#")[1]);
-    int=setInterval("changeColor()", 100);
+    int=setInterval("changeColor()", 50);
 }
 function changeColor() {
     var color = "#FFFFFF|#E8E8E8|#D1D1D1|#B9B9B9|#A2A2A2|#8B8B8B|#747474|#5D5D5D|#464646|#2E2E2E|#171717|#000000|#171717|#2E2E2E|#464646|#5D5D5D|#747474|#8B8B8B|#A2A2A2|#B9B9B9|#D1D1D1|#E8E8E8|#FFFFFF";
@@ -67,5 +67,5 @@ function changeColor() {
 }
 function reset()
 {
-    setTimeout(function(){int=window.clearInterval(int);int=0;obj.style.color="#000";},3000);
+    setTimeout(function(){int=window.clearInterval(int);int=0;obj.style.color="#000";},5000);
 }
