@@ -1,43 +1,29 @@
 $(function() {
-    var Accordion = function(el, multiple) {
-        this.el = el || {};
-        this.multiple = multiple || false;
-        // Variables privadas
-        var links = $('.toc>ul>li>a');
-        // Evento
-        links.on('click', { el: this.el, multiple: this.multiple }, this.dropdown)
-    }
-
-    Accordion.prototype.dropdown = function(e) {
-        var $el = e.data.el;
-        $this = $(this).parent(),
-            $next = $this.find('ul');
-
+    $('a').on('click', function(e) {
+        $this = $(this).parent();
+        $next = $this.find('>ul');
         $next.slideToggle();
         $this.toggleClass('open');
-        if (!e.data.multiple) {
-            $el.find('>li>ul').not($next).slideUp().parent().removeClass('open');
-        };
-    }
-
-    var accordion = new Accordion($('.toc>ul'), false);
+        $this.siblings().find('>ul').slideUp();
+        $this.siblings().removeClass('open');
+    });
 });
 $(function(){  
-  $('a').click(function() {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var $target = $(this.hash);
-      $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
-      if ($target.length) {
-        var targetOffset = $target.offset().top-20;
-        $('html,body').animate({
-          scrollTop: targetOffset
-        },
-        500);
-        showMe(this);
-        return false;
-      }
-    }
-  });
+    $('a').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var $target = $(this.hash);
+            $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+            if ($target.length) {
+                var targetOffset = $target.offset().top-20;
+                $('html,body').animate({
+                  scrollTop: targetOffset
+                },
+                500);
+                showMe(this);
+                return false;
+            }
+        }
+    });
 });
 var int = 0;
 var obj = null;
@@ -61,4 +47,38 @@ function showMe(thisObj){
         index++;       
         return false;
     }, 60);
+}
+$(function(){
+    $.ajax({
+        url:'http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=1357423913&callback=portraitCallBack',
+        type:'POST', //GET
+        async:true,    //或false,是否异步
+        data:"{}",
+        scriptCharset: "GBK",
+        timeout:5000,    //超时时间
+        dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+        beforeSend:function(xhr){
+            // console.log(xhr);
+            console.log('发送前');
+        },
+        success:function(data,textStatus){
+            console.log(data);
+            console.log(textStatus);
+            // console.log(jqXHR);
+        },
+        error:function(xhr,textStatus){
+            console.log('错误');
+            console.log(xhr);
+            console.log(textStatus);
+        },
+        complete:function(){
+            console.log('结束');
+        }
+    });
+});
+function portraitCallBack(json) {
+    var qqname=json['1357423913'][6];
+    console.log(qqname);
+    $("#qqimg").attr('title',qqname); 
+    $('#qqname').text(qqname);
 }
