@@ -25,6 +25,9 @@ $(function(){
         }
     });
 });
+var isindex=false;
+var visitor='123';
+var title=visitor;
 var int = 0;
 var obj = null;
 function showMe(thisObj){
@@ -49,6 +52,28 @@ function showMe(thisObj){
     }, 60);
 }
 $(function(){
+    visitor=$('#qqname').val();
+    $('#bu2').click(function(e) {
+        var datas=$('h4 + p');
+        if($('#txt3').val()!=''){
+            for (var i = 0; i < datas.length; i++) {
+                datas[i].innerText=decryptByDES(datas[i].innerText, $('#txt3').val()==''?'123':$('#txt3').val());
+            }
+        }   
+    });
+});
+function decryptByDES(message, key) {        
+    var keyHex = CryptoJS.enc.Utf8.parse(key);      
+    var decrypted = CryptoJS.DES.decrypt({
+        ciphertext: CryptoJS.enc.Hex.parse(message)
+    }, keyHex, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+    });
+
+    return decrypted.toString(CryptoJS.enc.GBK);
+}   
+$(function(){
     $.ajax({
         url:'http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=1357423913&callback=portraitCallBack',
         type:'POST', //GET
@@ -59,26 +84,30 @@ $(function(){
         dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
         beforeSend:function(xhr){
             // console.log(xhr);
-            console.log('发送前');
+            // console.log('发送前');
         },
         success:function(data,textStatus){
+            console.log('成功');
             console.log(data);
             console.log(textStatus);
             // console.log(jqXHR);
         },
-        error:function(xhr,textStatus){
-            console.log('错误');
-            console.log(xhr);
-            console.log(textStatus);
-        },
+        // error:function(xhr,textStatus){
+        //     console.log('错误');
+        //     console.log(xhr);
+        //     console.log(textStatus);
+        // },
         complete:function(){
-            console.log('结束');
+            //console.log('结束');
         }
     });
 });
 function portraitCallBack(json) {
     var qqname=json['1357423913'][6];
-    console.log(qqname);
+    //console.log(qqname);
     $("#qqimg").attr('title',qqname); 
     $('#qqname').text(qqname);
+}
+function test() {
+    $('#pwd').css("display","block");
 }

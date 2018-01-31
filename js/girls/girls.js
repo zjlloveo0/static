@@ -3,7 +3,7 @@
 jQuery(document).ready(function($) {
     $("#spig").mousedown(function(e) {
         if (e.which == 3) {
-            showMessage("恭喜你，发现秘密通道:<br /><br /><a href=\"https://zjlloveo0.github.io\" title=\"入口通道1\">入口通道1</a>        <a href=\"https://weibo.com/z1357423913\" title=\"入口通道2\">入口通道2</a>", 10000);
+            showMessage("恭喜你，发现秘密通道:<br /><br /><a href=\"https://zjlloveo0.github.io\" title=\"入口通道1\">入口通道1</a><br/><a href=\"https://weibo.com/z1357423913\" title=\"入口通道2\">入口通道2</a><br/><a href=\"javascript:test();\" title=\"入口通道3\">入口通道3</a>", 10000);
         }
     });
     $("#spig").bind("contextmenu", function(e) {
