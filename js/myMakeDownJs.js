@@ -30,6 +30,15 @@ var visitor='123';
 var title=visitor;
 var int = 0;
 var obj = null;
+var pwdCount=0;
+$(function() {
+    $('#titleHead').on('click', function(e) {
+        pwdCount+=1;
+        if(pwdCount>10){
+            test();
+        }
+    });
+});
 function showMe(thisObj){
     var index = 0;
     if(int != 0){
