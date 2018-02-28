@@ -66,7 +66,11 @@ $(function(){
         var datas=$('h4 + p');
         if($('#txt3').val()!=''){
             for (var i = 0; i < datas.length; i++) {
-                datas[i].innerText=decryptByDES(datas[i].innerText, $('#txt3').val()==''?'123':$('#txt3').val());
+                try {
+                    datas[i].innerText=decryptByDES(datas[i].innerText, $('#txt3').val()==''?'123':$('#txt3').val());
+                } catch(err) {
+                    datas[i].innerText='无权查看！';
+                }                
             }
         }   
     });
