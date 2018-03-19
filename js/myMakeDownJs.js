@@ -69,7 +69,7 @@ $(function(){
                 try {
                     datas[i].innerText=decryptByDES(datas[i].innerText, $('#txt3').val()==''?'123':$('#txt3').val());
                 } catch(err) {
-                    datas[i].innerText='无权查看！';
+                    datas[i].innerText=datas[i].innerText;
                 }                
             }
         }   
