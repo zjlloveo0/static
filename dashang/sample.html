@@ -4,14 +4,14 @@
 	<meta charset="utf-8" />
 	<meta name="keywords" content="打赏" />
 	<meta name="description" content="打赏" />
-	<link type="text/css" rel="stylesheet" href="css/myRewards.css">
+	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/css/myRewards.css">
 	<title>打赏</title>
 </head>
 <body>
     <script>
         window.tctipConfig = {
         	//最上面的文字
-            headText: "欢迎打赏支持我 ^_^",
+            headText: "欢迎打赏支持我",
             //侧边栏文本
             siderText: "公告 & 打赏",
             //侧边栏文本高度调整
@@ -21,7 +21,7 @@
             //整个侧边栏的高度设置可以px，em，或百分比
             siderTop:"118px",
             //底部文字
-            buttomText:"了解更多",
+            buttomText:"GitHub",
             //底部文字链接
             buttomLink:"https://github.com/zjlloveo0/",
 
@@ -50,12 +50,13 @@
                     className可以为空，或者传入myR-on；默认显示项。
         	**/
             list:{
-                notice: {icon: "img/icon/tip.png", name:"公告栏", className:"myR-on", text: '这是公告内容,这是公告内容,这是公告内容,这是公告内容<br><b style="color:red;">这是公告内容</b>,这是公告内容,这是公告内容'},
-                alipay: {icon: "img/icon/alipay.png", name:"支付宝", desc: "用支付宝打赏", qrimg: "img/qr/alipayqr.png"},
-                weixin: {icon: "img/icon/weixin.png", name:"微信", desc: "用微信打赏", qrimg: "img/qr/weixin.jpg"}	
+                notice: {icon: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/icon/tip.png", name:"公告", className:"myR-on", text: '这是公告内容,这是公告内容,这是公告内容,这是公告内容<br><b style="color:red;">这是公告内容</b>,这是公告内容,这是公告内容'},
+                alipay: {icon: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/icon/AliPay.png", name:"支付宝", desc: "用支付宝打赏", qrimg: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/qr/AliPay-ZAN.png"},
+                weixin: {icon: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/icon/WeChat.png", name:"微信", desc: "用微信打赏", qrimg: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/qr/WeChat-ZAN.png"},
+                bitcoin: {icon: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/icon/bitcoin.png", name:"Bitcoin", desc: "3Nk1PgJx8MxLiVajQqewwefnwY1STjKNn5", qrimg: "https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/img/qr/Bitcoin-ZAN.png"}
             }
         };
     </script>
-    <script src="js/tctip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zjlloveo0/static/dashang/js/tctip.min.js"></script>
 </body>
 </html>
