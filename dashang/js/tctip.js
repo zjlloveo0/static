@@ -299,7 +299,7 @@ var tctip =  window.tctip || {
 								'div', this.myRewards);
 							var main = this.myRewardsMain;
 							var obj = {className: "sider-close", title:"收起", onclick:function(){tctip.hideTctip(main);}};
-							obj[tctipUtil.getTextKey()] = ">>";
+							obj[tctipUtil.getTextKey()] = "×";
 							obj['href'] = "javascript:;";
 							tctipUtil.createElement(obj, 'a', this.myRewardsMain);
 
