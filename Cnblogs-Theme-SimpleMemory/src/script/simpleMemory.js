@@ -229,27 +229,9 @@ function initCheck() {
 function getVersionConfig() {
 
     window.cnblogsConfig.CnVersions = window.cnblogsConfig.GhVersions;
-    if (window.cnblogsConfig.GhUserName === 'BNDong') {
-
-        $.getScript('https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/version.js', function () {
-            setConfVersion();
-        });
-
-    } else {
-        var url = 'https://raw.githubusercontent.com/' + window.cnblogsConfig.GhUserName + '/' + window.cnblogsConfig.GhRepositories + '/master/version.conf';
-
-        $.ajax({
-            type: "get",
-            url: url,
-            dataType: "text",
-            async: false,
-            success: function(conf)
-            {
-                window.themeVersion = conf ? JSON.parse(conf) : false;
-                window.themeVersion && setConfVersion();
-            }
-        });
-    }
+    $.getScript('https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/version.js', function () {
+        setConfVersion();
+    });
 
     function setConfVersion() {
         var confVersion = getEndConfVal(window.cnblogsConfig.GhVersions);
