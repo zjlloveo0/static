@@ -1,7 +1,7 @@
 /*!
  * DATE: 2018-03-13
  * UPDATES AND DOCS AT: https://github.com/BNDong
- * https://www.cnblogs.com/bndong/
+ * https://www.cnblogs.com/MrZhou5/
  * @author: BNDong, dbnuo@foxmail.com
  **/
 function Base() {
