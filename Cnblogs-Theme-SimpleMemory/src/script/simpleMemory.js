@@ -1,7 +1,7 @@
 /*!
- * UPDATES AND DOCS AT: https://github.com/BNDong
+ * UPDATES AND DOCS AT: https://github.com/zjlloveo0
  * https://www.cnblogs.com/MrZhou5/
- * @author: BNDong, dbnuo@foxmail.com
+ * @author: zjlloveo0, dbnuo@foxmail.com
  **/
 if (initCheck()) {
     var sidebarHtml =
