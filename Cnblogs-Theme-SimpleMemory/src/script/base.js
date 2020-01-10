@@ -621,8 +621,8 @@ function Base() {
      */
     this.addFooter = function() {
         const footer = $('#footer'),
-              lHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName,
-              rHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName;
+              lHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName+'/'+window.cnblogsConfig.GhRepositories+'/tree/'+window.cnblogsConfig.CnVersions+'/Cnblogs-Theme-SimpleMemory/',
+              rHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName+'/'+window.cnblogsConfig.GhRepositories+'/tree/'+window.cnblogsConfig.GhVersions+'/Cnblogs-Theme-SimpleMemory/';
 
         var pvHtml   = '', bgFooter = '';
 
@@ -747,10 +747,12 @@ function Base() {
         // 设置加载主题信息
         function setTheme() {
 
-            $('#themeInfo').html('Theme version: '
-                +(window.cnblogsConfig.CnVersions).substring(0,7)
-                +' / Loading theme version: '
-                +(window.cnblogsConfig.GhVersions).substring(0,7)
+            $('#themeInfo').html('Theme version: <a href="'+lHref
+                +'" target="_blank" style="color: #888;text-decoration: underline;">'
+                +(window.cnblogsConfig.CnVersions).substring(0,7)+'</a>'
+                +' / Loading theme version: <a href="'+rHref
+                +'" target="_blank" style="color: #888;text-decoration: underline;">'
+                +(window.cnblogsConfig.GhVersions).substring(0,7)+'</a>'
             );
         }
     };
