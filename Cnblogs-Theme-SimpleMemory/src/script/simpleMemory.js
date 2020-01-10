@@ -89,8 +89,8 @@ if (initCheck()) {
 
     window.cnblogsConfigDefault = {
         GhUserName: 'zjlloveo0',
-        GhRepositories: 'static/Cnblogs-Theme-SimpleMemory',
-        GhVersions: 'v1.1.2',
+        GhRepositories: 'static',
+        GhVersions: '0.0.1',
         CnVersions: "",
         blogUser: "",
         blogAvatar: "",
@@ -315,7 +315,7 @@ function init() {
 // get file url
 function getJsDelivrUrl(file, directory) {
     file = setFileNameMin(file, directory);
-    return 'https://cdn.jsdelivr.net/gh/'+(window.cnblogsConfig.GhUserName)+'/'+(window.cnblogsConfig.GhRepositories)+'/' + (file ? file : '');
+    return 'https://cdn.jsdelivr.net/gh/'+(window.cnblogsConfig.GhUserName)+'/'+(window.cnblogsConfig.GhRepositories)+'/Cnblogs-Theme-SimpleMemory/' + (file ? file : '');
 }
 
 // optimization file name
