@@ -315,7 +315,7 @@ function init() {
 // get file url
 function getJsDelivrUrl(file, directory) {
     file = setFileNameMin(file, directory);
-    return 'https://cdn.jsdelivr.net/gh/'+(window.cnblogsConfig.GhUserName)+'/'+(window.cnblogsConfig.GhRepositories)+'/Cnblogs-Theme-SimpleMemory/' + (file ? file : '');
+    return 'https://cdn.jsdelivr.net/gh/'+(window.cnblogsConfig.GhUserName)+'/'+(window.cnblogsConfig.GhRepositories)+'@'+(window.cnblogsConfig.GhVersions)+'/Cnblogs-Theme-SimpleMemory/' + (file ? file : '');
 }
 
 // optimization file name
