@@ -1,7 +1,7 @@
 /*!
  * UPDATES AND DOCS AT: https://github.com/zjlloveo0
  * https://www.cnblogs.com/MrZhou5/
- * @author: zjlloveo0, dbnuo@foxmail.com
+ * @author: zjlloveo0, zjlloveo0@foxmail.com
  **/
 if (initCheck()) {
     var sidebarHtml =
@@ -170,12 +170,12 @@ if (initCheck()) {
             animateSections: true
         },
         homeTopImg: [
-            "https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/home_top_bg.jpg"
+            "https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/img/home_top_bg.jpg"
         ],
         homeBannerText: "",
         homeBannerTextType: "jinrishici",
         essayTopImg: [
-            "https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/nothome_top_bg.jpg"
+            "https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/img/nothome_top_bg.jpg"
         ],
         essayCodeHighlightingType: 'cnblogs',
         essayCodeHighlighting: '',

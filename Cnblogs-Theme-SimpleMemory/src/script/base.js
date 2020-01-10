@@ -2,7 +2,7 @@
  * DATE: 2018-03-13
  * UPDATES AND DOCS AT: https://github.com/zjlloveo0
  * https://www.cnblogs.com/MrZhou5/
- * @author: zjlloveo0, dbnuo@foxmail.com
+ * @author: zjlloveo0, zjlloveo0@foxmail.com
  **/
 function Base() {
 
@@ -93,7 +93,7 @@ function Base() {
         $('#menuWrap').optiscroll({ forceScrollbars: true, maxTrackSize: 20, preventParentScroll: true });
 
         // 设置菜单个人简介头像
-        var blogAvatar = window.cnblogsConfig.blogAvatar ? window.cnblogsConfig.blogAvatar : 'https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/default_avatar.jpeg';
+        var blogAvatar = window.cnblogsConfig.blogAvatar ? window.cnblogsConfig.blogAvatar : 'https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/img/default_avatar.jpeg';
         $('#menuBlogAvatar').append("<img src='"+blogAvatar+"'>");
 
         // html5-title
@@ -621,8 +621,8 @@ function Base() {
      */
     this.addFooter = function() {
         const footer = $('#footer'),
-              lHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName+'/'+window.cnblogsConfig.GhRepositories+'/tree/'+window.cnblogsConfig.CnVersions,
-              rHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName+'/'+window.cnblogsConfig.GhRepositories+'/tree/'+window.cnblogsConfig.GhVersions;
+              lHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName,
+              rHref  = 'https://github.com/'+window.cnblogsConfig.GhUserName;
 
         var pvHtml   = '', bgFooter = '';
 
@@ -670,7 +670,7 @@ function Base() {
             });
 
             $('.footer-image').css({
-                'background': 'url(https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/footer.png) no-repeat 50%',
+                'background': 'url(https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/img/footer.png) no-repeat 50%',
                 'height': '368px',
                 'z-index': '1',
                 'position': 'absolute',
@@ -1295,7 +1295,7 @@ function Base() {
                         var patch = op.text();
                         html += '<img class="comment-avatar" src="'+patch+'"/>';
                     } else {
-                        html += '<img class="comment-avatar" src="https://gitee.com/dbnuo/Cnblogs-Theme-SimpleMemory/raw/master/img/default_avatar.jpeg"/>';
+                        html += '<img class="comment-avatar" src="https://cdn.jsdelivr.net/gh/zjlloveo0/static/Cnblogs-Theme-SimpleMemory/img/default_avatar.jpeg"/>';
                     }
                     $(commentList[i]).before(html);
                 }
