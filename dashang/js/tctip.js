@@ -232,9 +232,9 @@ var tctip =  window.tctip || {
 								}
 								list.push(one);
 								num += 1;
-								if(num >= 5){
-									break;
-								}
+								// if(num >= 5){
+								// 	break;
+								// }
 							}
 
 							if(hasOn == false){
@@ -324,18 +324,18 @@ var tctip =  window.tctip || {
 	generateMyRewardsList:	function(){
 								this.myRewardsList = tctipUtil.createElement({className: "myRewards-list"},"div", this.myRewardsbox);
 
-								if(tctip.myConfig.list.length >= 5){
-									this.myRewardsListUl = tctipUtil.createElement({}, 'ul', this.myRewardsList);
-									//如果不足五行，新加一个class not-full
-								}else{
-									this.myRewardsListUl = tctipUtil.createElement({className: "not-full"}, 'ul', this.myRewardsList);
-								}
+								// if(tctip.myConfig.list.length >= 5){
+								// 	this.myRewardsListUl = tctipUtil.createElement({}, 'ul', this.myRewardsList);
+								// 	//如果不足五行，新加一个class not-full
+								// }else{
+								this.myRewardsListUl = tctipUtil.createElement({className: "not-full"}, 'ul', this.myRewardsList);
+								// }
 
 							/***
 								* 本来用的是for(var i in list)形式，
 								* 但是发现有些网页会给array加一些默认属性，因此改为现在的循环形式
 							***/
-								for(var i= 0; i < 5; i++){
+								for(var i= 0; i < tctip.myConfig.list.length; i++){
 									if( ! tctip.myConfig.list.hasOwnProperty(i)){
 										break;
 									}
@@ -353,9 +353,9 @@ var tctip =  window.tctip || {
 												};
 											a_params[tctipUtil.getTextKey()] = one.name;
 												/**第五个li增加fifth，去除boder-bottom*/
-										if(i==4){
-											a_params.className = "fifth";
-										}
+										// if(i==tctip.myConfig.list.length-1){
+										// 	a_params.className = "fifth";
+										// }
 										a_el = tctipUtil.createElement(a_params, 'a', li_el);
 									})();
 
