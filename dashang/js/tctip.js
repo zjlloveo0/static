@@ -192,7 +192,7 @@ var tctip =  window.tctip || {
 		siderBgcolor: "#323d45",
 		siderTop:"10%",
         buttomText:"了解更多",
-        buttomLink:"https://github.com/haddyyang/tctip"
+        buttomLink:"https://github.com/zjlloveo0/static/tree/master/dashang"
 	},
 
 	/***
@@ -310,7 +310,7 @@ var tctip =  window.tctip || {
 							this.generateMyRewardsbox();
 							
 							var myRewardsBot = tctipUtil.createElement({className: "myR-bot"}, 'p', this.myRewardsMain);
-							obj = {href:tctip.myConfig.buttomLink || "https://github.com/HaddyYang/tctip", target: "_blank"};
+							obj = {href:tctip.myConfig.buttomLink || "https://github.com/zjlloveo0/static/tree/master/dashang", target: "_blank"};
 							obj[tctipUtil.getTextKey()] =  tctip.myConfig.buttomText || "了解更多";
 							tctipUtil.createElement(obj, 'a', myRewardsBot);
 	},
@@ -318,7 +318,7 @@ var tctip =  window.tctip || {
 	generateMyRewardsbox:	function(){
 								this.myRewardsbox = tctipUtil.createElement({className: "myRewardsbox"},"div", this.myRewardsMain);
 								this.generateMyRewardsList();
-								this.generateMyRewardsDetail();
+								this.generateMyRewardsDetail(null);
 							},
 	
 	generateMyRewardsList:	function(){
@@ -375,8 +375,8 @@ var tctip =  window.tctip || {
 
 								this.myRewardsUbox = tctipUtil.createElement({className: "myRewards-ubox"},"div", this.myRewardsDetail);
 								var obj = {className: "myRewards-code-tit"};
+								obj[tctipUtil.getTextKey()] =  tctip.currentData.title||"扫描二维码打赏";
 								if(tctip.currentData.hasOwnProperty('text')){
-									obj[tctipUtil.getTextKey()] =  "最新公告";
 									tctipUtil.createElement(obj,"p", this.myRewardsUbox);
 
 									var myRewardsCode = tctipUtil.createElement({className: "myRewards-code"}, 'div',  this.myRewardsUbox);
@@ -385,7 +385,6 @@ var tctip =  window.tctip || {
 									var myRewardsAccount = tctipUtil.createElement(obj, "p", myRewardsCode);
 
 								}else{
-									obj[tctipUtil.getTextKey()] =  "扫描二维码打赏";
 									tctipUtil.createElement(obj,"p", this.myRewardsUbox);
 									var myRewardsCode = tctipUtil.createElement({className: "myRewards-code"}, 'div',  this.myRewardsUbox);
 									if(tctip.currentData.hasOwnProperty('qrimg')){
