@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible"content="IE=edge">
+<meta name="viewport"content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>万能收款码</title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
+<script type="text/javascript" src="js/qqapi.js?_bid=152"></script>
+<meta itemprop="name" content="三合一收款码">
+<meta itemprop="image" content="https://ae01.alicdn.com/kf/HTB1d1g2d2WG3KVjSZFP760aiXXaq.png">
+<meta name="description" itemprop="description" content="将支付宝.微信.QQ收款码集合到一起，打造最简洁的收款服务。">
+<link href="css/style.css"rel="stylesheet">
+<script type="text/javascript" src="site.json"></script>
+<script type="text/javascript" src="qq.json"></script>
+</head>
+<body id="color">
+<div class="code-item"id="code-all" style="display: none;">
+  <div id="ui-head"class="ui-panel ui-flex-pack-center ui-flex-align-center">
+    <img class="ui-qlogo" id="qlogo" src="https://q2.qlogo.cn/headimg_dl?dst_uin=2332009000&spec=100">
+    <div><h1>扫码支付</h1><h2 id="qnick">商户专用收款码</h2></div>
+  </div>
+  <div class="ui-box ui-panel ui-flex-align-center">
+    <div id="ui-content"class="ui-panel ui-flex-ver ui-flex-pack-center">
+      <div class="ui-tips">请长按二维码支付</div>
+      <br>
+      <div class="ui-qrcode"><img id="page-url"/></div>
+      <div class="ui-paytext"></div>
+      <div id="ui-setps"class="ui-panel ui-flex-pack-center">
+        <div>
+          <div class="ui-circle">1</div>
+          <i class="icon iconfont icon-changan"></i>
+          <div class="ui-padtop10">长按二维码</div>
+        </div>
+        <div>
+          <div class="ui-circle">2</div>
+          <i class="icon iconfont icon-erweima"></i>
+          <div class="ui-padtop10">扫描二维码</div>
+        </div>
+        <div>
+          <div class="ui-circle">3</div>
+          <i class="icon iconfont icon-icon-check-solid"></i>
+          <div class="ui-padtop10">输入金额支付</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/qr.js"></script>
+<script>
+    var setting = {
+        uin: GetQueryString('uin') != false?GetQueryString('uin'):2332009000,
+        qqUrl: GetQueryString('qq'),
+        wechatUrl: GetQueryString('vx'),
+        aliUrl: GetQueryString('ali'),
+    }
+    mqq.ui.setTitleButtons({right:{iconID:5,callback:function(){window.location.href='https://qrpay.uomg.com';}}});
+    // if (window.location.host != 'qrpay.uomg.com') {window.location.host = 'qrpay.uomg.com';}
+    function ElseAlipay(s_height){
+      document.getElementById("code-all").style.height = s_height +'px';
+      document.getElementById("code-all").style.display = "block";
+      document.getElementById("qlogo").src = 'https://q2.qlogo.cn/headimg_dl?spec=100&dst_uin=' + setting.uin;
+      $.getJSON('https://api.uomg.com/api/qq.info', {qq: setting.uin}, function(json) {
+          document.title = json.name +' - 商户收款';
+          document.getElementById("qnick").innerHTML = json.name;
+      });
+    }
+    function convertCanvasToImage() {  
+        var canvas=document.getElementsByTagName('canvas')[0];
+        var image = new Image();  
+        data = canvas.toDataURL("image/jpeg");  
+        return data;  
+    }
+    function pkJJLRCse(pkJJLRCse){document.write(unescape(pkJJLRCse));};
+    var s_height = window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;
+    if(navigator.userAgent.match(/Alipay/i)) {
+        if ($.cookie('hasDonate'+qrcode) == 1) window.location.href = setting.aliUrl;
+        if (pay_qq.indexOf(setting.uin) >= 0) window.location.href = setting.aliUrl;
+        
+        $('#redSearchCode').val(qrcode);
+        var i = 5;
+        var timer = null;
+        var time = new Date();
+        var timeStr = time.getFullYear() + "-" + (time.getMonth() + 1) + "-" + time.getDate();
+        var obtainRedEnvelopesTime = $.cookie('obtainRedEnvelopesTime');
+        $('#timer').text(i);
+        timer = setInterval(function () {
+            i--;
+            $('#timer').text(i);
+            if (i == 0) {
+                clearInterval(timer);
+                window.location.href = setting.aliUrl;
+            }
+        }, 1000);
+        var clipboard = new Clipboard('*', {
+            text: function() {
+                return qrcode;
+            } 
+        });
+        clipboard.on('success', function(e) {
+            console.log(e.text);
+            document.getElementById("pop").style.display = 'block';
+            document.getElementById("app").style.display = 'block';
+            var cookieName='hasDonate'+qrcode;
+            $.cookie(cookieName,'1',{expires:1});
+            window.location.href='alipays://platformapi/startapp?saId=20001003&clientVersion=3.7.0.071';
+        });
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    } else if(navigator.userAgent.match(/MicroMessenger\//i)) {
+        ElseAlipay(s_height);
+        document.body.style.backgroundColor = "#54bc6e";
+        $("#page-url").qrcode(setting.wechatUrl);
+        document.getElementById("page-url").src = convertCanvasToImage();
+        if (alikey != false) {
+          var clipboard = new Clipboard('*', {
+              text: function() {
+                  return alikey;
+              } 
+          });
+        }
+    } else if(navigator.userAgent.match(/QQ\//i)) {
+        ElseAlipay(s_height);
+        document.body.style.backgroundColor = "#049fda";
+        $("#page-url").qrcode(setting.qqUrl);
+        document.getElementById("page-url").src = convertCanvasToImage();
+        if (alikey != false) {
+          var clipboard = new Clipboard('*', {
+              text: function() {
+                  return alikey;
+              } 
+          });
+        }
+    } else if(navigator.userAgent.match(/Windows/i)) {
+        ElseAlipay(s_height);
+        document.body.style.backgroundColor = "#795548";
+        $("#page-url").qrcode(window.location.href);
+        $(".ui-tips").html('手机扫码支付');
+        document.getElementById("page-url").src = convertCanvasToImage();
+        //document.write('<div style="color: #fff;text-align: center;margin-top: 20%;">请使用手机QQ/微信/支付宝打开</div>');
+    } else {
+      document.body.style.background="#FFF";
+      
+    }
+    
+</script>
+</body>
+</html>

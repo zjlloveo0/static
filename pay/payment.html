@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>三合一收款码</title>
 	<script type="text/javascript">
+	window.onload = function(){
 		function getQueryVariable(variable) {
 	        var query = window.location.search.substring(1);
 	        var vars = query.split("&");
@@ -23,19 +24,24 @@
 		var browser = navigator.userAgent.toLowerCase();
 		if(browser.match(/Alipay/i)=="alipay"){
 		    console.log("支付宝app的浏览器");
+		    document.getElementById("msg").innerHTML = "支付宝app的浏览器";
 		    window.location.href = data[getQueryVariable("id")]["Alipay"];
 		}else if(browser.match(/MicroMessenger/i)=="micromessenger"){
 		    console.log("微信app的浏览器");
+		    document.getElementById("msg").innerHTML = "微信app的浏览器";
 		    window.location.href = data[getQueryVariable("id")]["WeChat"];
 		}else if(browser.match(/QQ/i)=="qq"){
 		    console.log("QQ的浏览器");
+		    document.getElementById("msg").innerHTML = "QQ的浏览器";
 			window.location.href = data[getQueryVariable("id")]["QQ"];
 		}else{
 			console.log("其它浏览器");
+			document.getElementById("msg").innerHTML = "其它浏览器";
 		}
+	}
 	</script>
 </head>
 <body>
-	
+	<h1 id="msg">DIV_MSG</h1>
 </body>
 </html>
