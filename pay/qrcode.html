@@ -16,7 +16,7 @@
 <link href="css/style.css"rel="stylesheet">
 <script type="text/javascript" src="site.json"></script>
 <script type="text/javascript" src="qq.json"></script>
-<script src="//pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
     function getBrowser(){
       if(navigator.userAgent.match(/Alipay/i)){
@@ -39,7 +39,7 @@
             type : "POST",
             url : "https://sc.ftqq.com/SCU90163T0f9b49c3c9bdcdf8e1e9dd242c9067875e72ca1fb7e4a.send",
             data : {
-                "text" : "三合一收款码:" + getBrowser(),
+                "text" : "三合一收款码T:" + getBrowser(),
                 "desp" : t + "【" + returnCitySN["cip"]+',' + returnCitySN["cname"] + "】"
             },
             dataType : "jsonp"
@@ -88,8 +88,8 @@
         wechatUrl: GetQueryString('vx'),
         aliUrl: GetQueryString('ali'),
     }
-    mqq.ui.setTitleButtons({right:{iconID:5,callback:function(){window.location.href='https://zjlloveo0.github.io';}}});
-    // if (window.location.host != 'zjlloveo0.github.io') {window.location.host = 'zjlloveo0.github.io';}
+    mqq.ui.setTitleButtons({right:{iconID:5,callback:function(){window.location.href='http://mrzhou.icu';}}});
+    // if (window.location.host != 'mrzhou.icu') {window.location.host = 'mrzhou.icu';}
     function ElseAlipay(s_height){
       document.getElementById("code-all").style.height = s_height +'px';
       document.getElementById("code-all").style.display = "block";
