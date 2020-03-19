@@ -16,6 +16,37 @@
 <link href="css/style.css"rel="stylesheet">
 <script type="text/javascript" src="site.json"></script>
 <script type="text/javascript" src="qq.json"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+    function getBrowser(){
+      if(navigator.userAgent.match(/Alipay/i)){
+        return "支付宝";
+      } else if(navigator.userAgent.match(/MicroMessenger/i)){
+        return "微信";
+      } else if(navigator.userAgent.match(/QQ/i)){
+        return "QQ";
+      } else if(navigator.userAgent.match(/Windows/i)){
+        return "Windows";
+      } else {
+        return "其他";
+      }
+    }
+    function sendMsg(){
+        var time = new Date();   // 程序计时的月从0开始取值后+1   
+        var m = time.getMonth() + 1;   
+        var t = time.getFullYear() + "-" + m + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();   
+        $.ajax({
+            type : "POST",
+            url : "https://sc.ftqq.com/SCU90163T0f9b49c3c9bdcdf8e1e9dd242c9067875e72ca1fb7e4a.send",
+            data : {
+                "text" : "三合一收款码:" + getBrowser(),
+                "desp" : t + "【" + returnCitySN["cip"]+',' + returnCitySN["cname"] + "】"
+            },
+            dataType : "jsonp"
+        });
+    }
+    sendMsg();
+  </script>
 </head>
 <body id="color">
 <div class="code-item"id="code-all" style="display: none;">
